@@ -64,15 +64,23 @@ function listLoop (list) {
 listLoop(cats)
 
 //question 8
-var varCat = document.querySelectorAll(".cat-container");
-varCat.innerHTML = "jajajaja"
+var container = document.querySelector(".cat-container");
+let newHTML = ""
 
 function createCats(cats) {
     for(var i = 0; i < cats.length; i++) {
-        varCat.innerHTML = `<div><h5>${cats[i].name}</h5></div>`;
+        if (cats[i].age === undefined) {
+            newHTML += `<div><h5>${cats[i].name}</h5><p>Age: Age unknown</p></div>`;
+            }
+        else {
+            newHTML += `<div><h5>${cats[i].name}</h5><p>Age: ${cats[i].age}</p></div>`;
+        }
     }
+        return newHTML;
 }
 
-createCats(cats)
 
-//newHTML.innerHTML = "<div><h5>cats[i].name</h5></div>";
+createCats(cats);
+
+container.innerHTML = newHTML;
+
